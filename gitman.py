@@ -203,7 +203,7 @@ if args.init:
 
 			git.Repo.clone_from(args.init[0], "{}/.gitman/manifest.git".format(prefix_dir))
 
-	except subprocess.CalledProcessError as e:
+	except:
 
 		print("Git error")
 
