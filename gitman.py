@@ -201,15 +201,11 @@ if args.init:
 				print("Exiting....")
 				sys.exit(1)
 
-			output = subprocess.check_output(
-				['git', 'clone', args.init[0], '{}.gitman/manifest.git'.format(args.init[0], prefix_dir)],
-				stderr=subprocess.STDOUT)
+			git.Repo.clone_from(args.init[0], "{}/.gitman/manifest.git".format(prefix_dir))
 
 	except subprocess.CalledProcessError as e:
 
-		print("Git error:")
-
-		sys.stdout.buffer.write(e.output)
+		print("Git error")
 
 		shutil.rmtree(prefix_dir+".gitman")
 
